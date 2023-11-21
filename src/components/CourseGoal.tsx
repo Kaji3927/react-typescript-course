@@ -6,16 +6,20 @@ import { type PropsWithChildren } from "react";
 // }
 
 // Alternative Way
-type CourseGoalProps = PropsWithChildren<{ title: string }>;
+type CourseGoalProps = PropsWithChildren<{
+  title: string;
+  id: number;
+  onDelete: (id: number) => void;
+}>;
 
-const CourseGoal = ({ title, children }: CourseGoalProps) => {
+const CourseGoal = ({ title, id, onDelete, children }: CourseGoalProps) => {
   return (
     <article>
       <div>
         <h2>{title}</h2>
         {children}
       </div>
-      <button>Delete</button>
+      <button onClick={() => onDelete(id)}>Delete</button>
     </article>
   );
 };
